@@ -3,7 +3,7 @@
 import React from 'react';
 import {
   Animated,
-  TouchableWithoutFeedback,
+  TouchableNativeFeedback,
   StyleSheet,
   View,
   Platform,
@@ -60,7 +60,8 @@ class TouchableWithoutFeedbackWrapper extends React.Component<*> {
     } = this.props;
 
     return (
-      <TouchableWithoutFeedback
+      <TouchableNativeFeedback
+        background={TouchableNativeFeedback.Ripple('#B5C3D3', true)}
         onPress={onPress}
         onLongPress={onLongPress}
         testID={testID}
@@ -68,7 +69,7 @@ class TouchableWithoutFeedbackWrapper extends React.Component<*> {
         accessibilityLabel={accessibilityLabel}
       >
         <View {...props} />
-      </TouchableWithoutFeedback>
+      </TouchableNativeFeedback>
     );
   }
 }
