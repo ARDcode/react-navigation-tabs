@@ -59,9 +59,7 @@ class TouchableWithoutFeedbackWrapper extends React.Component<*> {
       accessibilityLabel,
       ...props
     } = this.props;
-
-    return (
-      if(Platform.OS === 'android') return (
+    if(Platform.OS === 'android') return (
         <TouchableNativeFeedback
         background={TouchableNativeFeedback.Ripple('#B5C3D3', true)}
         onPress={onPress}
@@ -82,7 +80,6 @@ class TouchableWithoutFeedbackWrapper extends React.Component<*> {
         >
           <View {...props} />
         </TouchableWithoutFeedback>)
-    );
   }
 }
 
