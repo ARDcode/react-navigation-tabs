@@ -4,6 +4,7 @@ import React from 'react';
 import {
   Animated,
   TouchableNativeFeedback,
+  TouchableWithoutFeedback,
   StyleSheet,
   View,
   Platform,
@@ -60,7 +61,8 @@ class TouchableWithoutFeedbackWrapper extends React.Component<*> {
     } = this.props;
 
     return (
-      <TouchableNativeFeedback
+      if(Platform.OS === 'android') return (
+        <TouchableNativeFeedback
         background={TouchableNativeFeedback.Ripple('#B5C3D3', true)}
         onPress={onPress}
         onLongPress={onLongPress}
@@ -68,8 +70,18 @@ class TouchableWithoutFeedbackWrapper extends React.Component<*> {
         hitSlop={{ left: 15, right: 15, top: 5, bottom: 5 }}
         accessibilityLabel={accessibilityLabel}
       >
-        <View {...props} />
-      </TouchableNativeFeedback>
+        <View {...props} /></TouchableNativeFeedback>
+    );
+    return (
+        <TouchableWithoutFeedback
+            onPress={onPress}
+            onLongPress={onLongPress}
+            testID={testID}
+            hitSlop={{ left: 15, right: 15, top: 5, bottom: 5 }}
+            accessibilityLabel={accessibilityLabel}
+        >
+          <View {...props} />
+        </TouchableWithoutFeedback>)
     );
   }
 }
